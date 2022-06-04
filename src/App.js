@@ -1,24 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { useContext } from "react";
+import { ThemeContext } from "./contexts/theme";
+import { Habilidades, Proyectos, SobreMi, Header } from "./portafolio";
+import Footer from "./components/Footer/Footer";
+import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
+
 
 function App() {
+  const [{ themeName }] = useContext(ThemeContext);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <div id="top" className={`${themeName} app`}>
+        <Header />
+        <main>
+          <SobreMi />
+          <Proyectos />
+          <Habilidades />
+        </main>
+        <ScrollToTop />
+        <Footer />
+      </div>
+    </>
   );
 }
 
